@@ -7,7 +7,7 @@ const Navigation = props => (
 		<div className="container">
 			<h1>Click on any image to begin</h1>
 			<span></span>
-			<p>Score: {props.currentScore}</p>
+			<p>Current Score: {props.currentScore}</p>
 			<p>Top Score: {props.topScore}</p>
 		</div>
 	</nav>

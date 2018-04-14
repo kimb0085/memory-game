@@ -7,7 +7,6 @@ const Title = () => (
 		<h2>Earn points by clicking on images below, but only click each image once</h2>
 		<div></div>
 	</header>
-
 );
 
 export default Title;

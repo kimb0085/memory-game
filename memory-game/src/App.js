@@ -6,14 +6,6 @@ import Navigation from "./components/Navigation";
 import Title from "./components/Title";
 import ImageCard from "./components/ImageCard";
 
-// class App extends Component {
-//   state = {
-//   		message: "Click on any animal to begin!",
-// 		images: images,
-// 		clickedImg: [],
-// 		currentScore: 0,	
-// 		topScore: 0
-//   }
 
 class App extends Component {
 
@@ -79,7 +71,7 @@ class App extends Component {
 	            key={image.id}
 	            name={image.name}
 	            image={image.image}
-	            clickedImage={this.clickedImage}
+	            selectedImage={this.selectedImage}
 	          />	          
 	        ))}
       </Wrapper>
