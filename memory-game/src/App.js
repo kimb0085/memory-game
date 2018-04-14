@@ -63,7 +63,10 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-        <Navigation />
+        <Navigation
+        	currentScore={this.currentScore}
+        	topScore={this.topScore}
+         />
 	      	<Title />
 	        {this.state.images.map(image => (
 	          <ImageCard
