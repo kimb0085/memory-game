@@ -9,6 +9,8 @@ const Navigation = props => (
 			<span></span>
 			<p>Current Score: {props.currentScore}</p>
 			<p>Top Score: {props.topScore}</p>
+			<p>Message: {props.message}</p>
+			<span></span>
 		</div>
 	</nav>
 );
