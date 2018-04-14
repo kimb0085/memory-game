@@ -1,24 +1,23 @@
 import React from "react";
 import "./ImageCard.css";
 
-// const handleClickEvent = event => {
-// 	// event.preventDefault();
-// 	const idClicked = event.image.id;
 
-// 	const newArray = this.state.idClicked;
+// const ImageCard = props => (
+// 	<div className="card">
+// 		<div className="img-container">
+// 			<img alt={props.name} src={props.image} imageId={props.key} onClick={() => props.clickedImg(props.id)} />
+// 		</div>
+// 	</div>
+// );
 
-// 	ImageCard();
-
-// // 	this.setState({results: shuffle(this.state.results)});
-// }
-
-const ImageCard = props => (
-	<div className="card" onClick={props.ImageCard}>
-		<div className="img-container">
-			<img alt={props.name} src={props.image} />
-		</div>
-		<div></div>
-	</div>
-);
+const ImageCard = (props) => {
+	return(
+	    <div className="card">
+	    	<div className="img-container">
+	        	<img alt={props.name} src={props.image} id={props.id} onClick={() => props.selectImage(props.id)}/> 
+	        </div> 
+	    </div>
+	   );
+	}
 
 export default ImageCard;

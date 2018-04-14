@@ -6,133 +6,85 @@ import Navigation from "./components/Navigation";
 import Title from "./components/Title";
 import ImageCard from "./components/ImageCard";
 
+// class App extends Component {
+//   state = {
+//   		message: "Click on any animal to begin!",
+// 		images: images,
+// 		clickedImg: [],
+// 		currentScore: 0,	
+// 		topScore: 0
+//   }
+
 class App extends Component {
-	state = {
-		message: "Click on any animal to begin!",
-		images: images,
-		clickedImg: [],
-		currentScore: 0		 
-		// unselected: images
-	};
 
-	imageClick = event => {
-		const unselected = event.target.alt;
-		const selectedImg = this.state.clickedImg.indexOf(unselected) > - 1;
+  state = {
+    message: "Click on any animal to begin!",
+	images: images,
+	clickedImg: [],
+	currentScore: 0,	
+	topScore: 0
+  };
 
-		if(selectedImg){
-			this.setState({
-				image: this.state.image.sort(function(a, b){
-					return 0.5 - Math.random();
-				}),
-				clickedImg: [],
-				currentScore: 0
-			});
-			alert("tough luck, give it another shot");
-		} else {
-			this.setState(
-				{
-					image: this.state.image.sort(function(a, b){
-						return 0.5 - Math.random();
-					}),
-					clickedImg: this.state.clickedImg.concat(
-						unselected
-					),
-					currentScore: this.state.currentScore + 1
-				},
+  selectedImage = id => {
+    const clickedImg = this.state.clickedImg;
+    if (clickedImg.indexOf(id) === -1) {
+      clickedImg.push(id);
+      this.setState({
+        clickedImg: clickedImg,
+        currentScore: this.state.currentScore + 1
+      });
+      if (this.state.currentScore >= this.state.topScore) {
+        this.setState({ topScore: this.state.currentScore + 1});
+      }
+    }
+    else {
+      this.setState({
+        currentScore: 0,
+        clicked: [],
+        comments: "Shoot! You lost! Give it another shot, I know you can do it!"
+      }, this.reset());
+    }
+    this.gameOver();
+  }
 
-				() => {
-					if (this.state.currentScore === 12) {
-						alert("congrats! you won!");
-						this.setState({
-							image: this.state.food.sort(function(a, b){
-								return 0.5 - Math.random();
-							}),
-							clickedImg: [],
-							currentScore: 0
-						});
-					}
-				}
-			);
-		}
-	}
+  gameOver() {
+    if (this.state.currentScore === 12 ) {
+      this.setState({
+        comments: "Whoop whoop! You've won!"
+      }).then(() => {
+        this.setState({
+	        message: "Click on any animal to begin!",
+			images: images,
+			clickedImg: [],
+			currentScore: 0,	
+			topScore: 0
+        });
+      })
+    }
+  }
 
-	// render(){
-	// 	return (
-	// 		<div>
-	// 			<Navigation
-	// 				currentScore={this.state.currentScore}
-	// 			/>
-	// 			<Title />
-	// 			<div className="wrapper">
-	// 				{this.state.image.map(image => (
-	// 					<ImageCard
-	// 						imageClick={this.imageClick}
-	// 						key={image.id}
-	// 						id={image.id}
-	// 						name={image.name}
-	// 						image={image.image}
-	// 					/>
-	// 				))}
-	// 			</div>
-	// 		</div>
-	// 	);
-	// }
+  reset() {
+    setTimeout(() => {4000});
+  }
 
-	// mounted(){
- 
-	// };
-
-	// shuffle = array => {
-	// 	for (let i = array.length - 1; i > 0; i--){
-	// 		let j = Math.floor(Math.random() * (i + 1));
-	// 		[array[i], array[j]] = [array[j], array[i]];
-	// 	}
-	// }
-
-	// selectImage = name => {
-	// 	const findImg = this.state.unselected.find(item => item.name === name);
-
-	// 	if(findImg === undefined) {
-	// 		//oops, you did select a new, unique image
-	// 		this.setState({
-	// 			message: "You already guessed that one",
-	// 			topScore: (this.state.currentScore > this.state.topScore) ? this.state.currentScore: this.state.topScore,
-	// 			currentScore: 0,
-	// 			images: images,
-	// 			unselected: images
-	// 		});
-	// 	} else {
-	// 		//correctly selected a new image
-	// 		const newImages = this.state.unselected.filter(item => item.name != name);
-
-	// 		this.setState({
-	// 			message: "You are so right!",
-	// 			currentScore: this.state.currentScore + 1,
-	// 			images: images,
-	// 			unselected: images
-	// 		});
-	// 	}
-	// 	this.shuffle(images);
-	// }
-
-	//render an image card 
-	render() {
-		return (
-			<Wrapper>
-				<Navigation	/>
+  render() {
+    return (
+        <Wrapper>
+			<Navigation	/>
 				<Title />
-				{this.state.images.map(image => (
-					<ImageCard				
-						imageClick={this.imageClick}
-						key={image.id}
-						id={image.id}
-						name={image.name}
-						image={image.image}
-					/>
-				))}
-			</Wrapper>
-			);
-		}
+					{this.state.images.map(image => (
+						<ImageCard				
+							imageClick={this.imageClick}
+							key={image.id}
+							id={image.id}
+							name={image.name}
+							image={image.image}
+						/>
+					))}
+		</Wrapper>
+    );
+  }
 }
+
 
 export default App;
