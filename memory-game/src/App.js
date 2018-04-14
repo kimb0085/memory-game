@@ -67,24 +67,24 @@ class App extends Component {
     setTimeout(() => {4000});
   }
 
+
   render() {
     return (
-        <Wrapper>
-			<Navigation	/>
-				<Title />
-					{this.state.images.map(image => (
-						<ImageCard				
-							imageClick={this.imageClick}
-							key={image.id}
-							id={image.id}
-							name={image.name}
-							image={image.image}
-						/>
-					))}
-		</Wrapper>
+      <Wrapper>
+        <Navigation />
+	      	<Title />
+	        {this.state.images.map(image => (
+	          <ImageCard
+	            id={image.id}
+	            key={image.id}
+	            name={image.name}
+	            image={image.image}
+	            clickedImage={this.clickedImage}
+	          />	          
+	        ))}
+      </Wrapper>
     );
   }
 }
 
-
-export default App;
+ export default App;
