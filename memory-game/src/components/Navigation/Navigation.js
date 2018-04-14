@@ -1,22 +1,30 @@
 import React from "react";
 import "./Navigation.css";
 
+// class Navbar extends Component {
+// 	render() {
+// 		return (
+// 			<nav className="navbar navbar-default navbar-fixed-top">
+// 				<ul>
+// 					<li className="itemLeft">Click any image to begin</li>
+// 					<li className="itemCenter"></li>
+// 					<li className="itemRight">Current Score: {this.props.currentScore}</li>
+// 					<li className="itemRight"></li>
+// 				</ul>
+// 			</nav>
+// 		);
+// 	}
+// }
+
 const Navigation = props => (
-	<div>
-		<ul className="nav nav-pills nav-justified">
-			<li><a href="/">Baby Animals Clicky Game</a></li>
-			<li
-				className={props.message.indexOf("incorrectly") !== -1 ?
-					"desc-incorrect":
-					props.message.indexOf("correctly") != -1 ?
-						"desc-correct":
-						"desc-normal"}
-			/>
-				{props.message}
-			</li>
-			<li>Current Score: <span style={{color: "green"}}>{props.currentScore}</span> | Top Score: {props.topScore}</li>
-		</ul>
-	</div>
+	<nav className="navbar navbar-default navbar-fixed-top">
+		<div className="container">
+			<h1>Click on any image to begin</h1>
+			<span></span>
+			<p>Score: {props.currentScore}</p>
+		</div>
+		<div></div>
+	</nav>
 );
 
 export default Navigation;

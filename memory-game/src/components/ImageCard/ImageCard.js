@@ -1,27 +1,24 @@
 import React from "react";
 import "./ImageCard.css";
 
-const handleClickEvent = event => {
-	// event.preventDefault();
-	const idClicked = event.image.id;
+// const handleClickEvent = event => {
+// 	// event.preventDefault();
+// 	const idClicked = event.image.id;
 
-	const newArray = this.state.idClicked;
+// 	const newArray = this.state.idClicked;
 
-	ImageCard();
+// 	ImageCard();
 
-// 	this.setState({results: shuffle(this.state.results)});
-}
+// // 	this.setState({results: shuffle(this.state.results)});
+// }
 
 const ImageCard = props => (
-	<div className="card">
+	<div className="card" onClick={props.ImageCard}>
 		<div className="img-container">
-			<button 
-				onClick={props.onClick}
-				className={props.currentScore === 0}
-			/>
-				<img alt={props.name} src={props.image} />
+			<img alt={props.name} src={props.image} />
 		</div>
+		<div></div>
 	</div>
 );
 
-export default handleClickEvent;
+export default ImageCard;

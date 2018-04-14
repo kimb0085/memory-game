@@ -9,10 +9,9 @@ import ImageCard from "./components/ImageCard";
 class App extends Component {
 	state = {
 		message: "Click on any animal to begin!",
-		image,
+		images: images,
 		clickedImg: [],
-		currentScore: 0
-		// images: images, 
+		currentScore: 0		 
 		// unselected: images
 	};
 
@@ -120,11 +119,7 @@ class App extends Component {
 	render() {
 		return (
 			<Wrapper>
-				<Navigation
-					// message={this.state.message}
-					// currentScore={this.state.currentScore}
-					// topScore={this.state.topScore}
-				/>
+				<Navigation	/>
 				<Title />
 				{this.state.images.map(image => (
 					<ImageCard				
